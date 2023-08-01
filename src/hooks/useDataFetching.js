@@ -8,19 +8,27 @@ function useDataFetching(dataSource) {
 
     useEffect(()=> {
 
-      function async fetchData(dataSource) =>  {
+        async function fetchData(dataSource)  {
 
         try {
 
             const data =  await fetch ( dataSource) ;
             
              const result   = await data.json()
+        
+        if (result) {
+                       setData(result);
+                       setLoading(false);
+                     }
+                   } catch (e) {
+                     setLoading(false);
+                     setError(e.message);
+                   }
+                 }
+                 fetchData();
+               }, [dataSource]);
+               return [loading, error, data];
+
         }
 
-
-        }
-    })
-
-  return [];
-}
 export default useDataFetching;

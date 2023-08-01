@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+
 import Lane from '../../components/Lane/Lane';
 import './Board.css';
 
